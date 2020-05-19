@@ -11,10 +11,21 @@ encrypted_text = "CnwbxaOuxf rb jw nwm-cx-nwm xynw bxdaln yujcoxav oxa vjlqrwn u
 
 def decode_caesar(text, key):
     # TODO
+    alphabet = 'abcedfghijklmnopqrstuvwxyz'
+    decoded_word = ''
+    decoded_text = []
+    encrypted = str.lower(text)  # .split(' ')
+    for i in encrypted:  # range(len(encrypted)):
+        # letter=encrypted[i]
+        if i in alphabet:
+            decoded_word += alphabet[(alphabet.index(i) + key) % 26]
+        else:
+            decoded_word += i
+    decoded_text.append(decoded_word)
     return decoded_text
 
 
 # TODO
-for k in ...:
+for k in range(1):
     text_out = decode_caesar(encrypted_text, k)
     print(text_out)
