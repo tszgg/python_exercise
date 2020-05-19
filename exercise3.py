@@ -16,8 +16,29 @@ Hint: use the `re` library. `re` stands for Regular Expression, with a lot of tu
 import re
 
 def check_password_validity(pw):
-    # TODO
-    # return a boolean `True` if the password is valid, `False` otherwise
+   # TODO
+   # return a boolean `True` if the password is valid, `False` otherwise
+   #pattern = r"([a-z]+)([A-Z]+)([0-9]+)([$#@]+)"
+    flag = 1
+    if (len(pw)<6):
+        flag -=1
+    if  (len(pw)>12): 
+        flag -=1
+    if not re.search("[a-z]", pw): 
+        flag -= 1
+    if not re.search("[A-Z]", pw): 
+        flag -= 1
+    if not re.search("[0-9]", pw): 
+        flag -= 1
+    if not re.search("[#@$]", pw): 
+        flag -= 1
+    #if re.search("\s", pw): 
+    #   flag -= 1
+    if flag<0:
+        return False
+    else: 
+        return True 
+    
 
 good_password = "3GGEsdv2#gv1e4Ob2fbf"  # fails rule #6 only, so good
 bad_password = "sgdf3298b"  # fails rule #3 and #4, so bad
